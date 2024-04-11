@@ -17,4 +17,11 @@ export default defineConfig({
             },
         }),
     ],
+    test: {
+        globals: true,
+        environmentMatchGlobs: [
+            ["tests/Feature/Vitest.test.js", "node"],
+            ['tests/Feature/**' , 'jsdom']
+        ]
+    },
 });
