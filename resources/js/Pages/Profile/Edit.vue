@@ -22,8 +22,10 @@ defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="text-xl text-gray-800 leading-tight">Profile: <div v-html="$page.props.auth.user.name"></div>
-            </h2>
+            <div class="flex items-center">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Perfil:</h2>
+                <div v-html="$page.props.auth.user.name" class="ml-2 text-lg text-gray-900"></div>
+            </div>
         </template>
 
         <div class="py-12">
