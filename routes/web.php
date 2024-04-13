@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/delete-user/{id}', [UserController::class, 'destroy'])->name('welcome.users.destroy');
 });
 
+
+
 Route::get('/users', function () {
     $users = User::all();
     return response()->json($users);
