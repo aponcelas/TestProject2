@@ -12,7 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-300">
+        <div class="min-h-screen bg-gray-200">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,8 +29,11 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <template v-if="$page.props.auth.user">
-                                    <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                        Dashboard
+                                    <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
+                                        Gestió de cursos
+                                    </NavLink>
+                                    <NavLink :href="route('content.index')" :active="route().current('content.index')">
+                                        Gestió de continguts
                                     </NavLink>
                                 </template>
                                 <template v-else>

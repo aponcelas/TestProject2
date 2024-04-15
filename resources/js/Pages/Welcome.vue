@@ -1,6 +1,6 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { initFlowbite } from 'flowbite';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Card from '@/Components/Card.vue';
@@ -26,6 +26,13 @@ const props = defineProps({
     }
 });
 
+const acceptedCookies = ref(false);
+
+const acceptCookies = () => {
+    acceptedCookies.value = true;
+    localStorage.setItem('acceptedCookies', true); // Guardar en localStorage
+}
+
 onMounted(() => {
     initFlowbite();
 })
@@ -36,13 +43,18 @@ onMounted(() => {
     <Head title="Welcome" />
 
     <AuthenticatedLayout>
-        <div class="bg-gray-300">
+        <div class="bg-gray-200">
             <div class="relative flex flex-col items-center justify-center p-10">
                 <div class="relative w-full">
                     <main>
                         <h1
                             class="mb-4 text-3xl font-bold text-center leading-none tracking-tight text-gray-800 md:text-3xl lg:text-4xl dark:text-white">
-                            Test Project</h1>
+                            EducatiuCat</h1>
+                        <p
+                            class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">
+                            Benvingut a EducatiuCat, la plataforma educativa líder on trobaràs una àmplia gamma de
+                            cursos per a tots els nivells i edats. Aprèn de manera interactiva i divertida. Comença avui
+                            mateix el teu viatge educatiu amb nosaltres!</p>
                         <div id="default-carousel" class="relative w-full" data-carousel="slide">
                             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -116,4 +128,19 @@ onMounted(() => {
             </div>
         </div>
     </AuthenticatedLayout>
+
+    <div v-if="!acceptedCookies" class="bottom-0 left-0 right-0 flex w-full -mt-4">
+        <div class="bg-white p-6 w-full">
+            <h2 class="text-xl font-semibold mb-4">Política de Cookies</h2>
+            <p class="text-sm text-gray-600 w-full">
+                Aquest lloc web utilitza cookies per garantir que obtinguis la millor experiència en el nostre lloc web.
+                Per obtenir més informació sobre les cookies que utilitzem i com pots gestionar-les, consulta la nostra
+                <a href="/politica-de-cookies" class="text-blue-500 hover:underline">política de cookies</a>.
+            </p>
+            <div class="mt-2 flex justify-end">
+                <button @click="acceptCookies"
+                    class="px-2 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Acceptar</button>
+            </div>
+        </div>
+    </div>
 </template>
