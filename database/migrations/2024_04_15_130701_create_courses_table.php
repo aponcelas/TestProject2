@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->enum('etapa', ['ESO', 'BTX', 'CF']);
             $table->text('descripcion');
-            $table->boolean('activo')->default(true);
+            $table->enum('activo', ['Public', 'Privat'])->default('Public');
             $table->timestamps();
         });
     }

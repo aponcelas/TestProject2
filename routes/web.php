@@ -18,6 +18,12 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+    Route::post('/add-course', [CoursesController::class, 'add'])->name('courses.add');
+    Route::post('/edit-course/{id}', [CoursesController::class, 'update'])->name('courses.update');
+    Route::post('/delete-course/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+    Route::get('/courses/generate-json', [CoursesController::class, 'generateJson'])->name('courses.generateJson');
+
+
     Route::get('/content', [ContentController::class, 'index'])->name('content.index');
 
 
