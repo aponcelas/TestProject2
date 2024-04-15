@@ -40,10 +40,10 @@ class CoursesController extends Controller
     
         $course = Course::findOrFail($id);
 
-        $course->nombre = $validatedData['name'];
-        $course->etapa = $validatedData['stage'];
-        $course->descripcion = $validatedData['description'];
-        $course->activo = $validatedData['state'];
+        $course->name = $validatedData['name'];
+        $course->stage = $validatedData['stage'];
+        $course->description = $validatedData['description'];
+        $course->state = $validatedData['state'];
 
         $course->save();        
     }
@@ -53,6 +53,7 @@ class CoursesController extends Controller
         $course = Course::find($id);
         
         if ($course) {
+            $course->resources()->delete();
             $course->delete();
         }
     }
@@ -67,10 +68,10 @@ class CoursesController extends Controller
         ]);
 
         $course = Course::create([
-            'nombre' => $validatedData['name'],
-            'etapa' => $validatedData['stage'],
-            'descripcion' => $validatedData['description'],
-            'activo' => $validatedData['state'],
+            'name' => $validatedData['name'],
+            'stage' => $validatedData['stage'],
+            'description' => $validatedData['description'],
+            'state' => $validatedData['state'],
         ]);
     }
 

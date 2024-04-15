@@ -20,7 +20,7 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    users: {
+    courses: {
         type: Object,
         required: true,
     }
@@ -30,7 +30,7 @@ const acceptedCookies = ref(false);
 
 const acceptCookies = () => {
     acceptedCookies.value = true;
-    localStorage.setItem('acceptedCookies', true); // Guardar en localStorage
+    localStorage.setItem('acceptedCookies', true);
 }
 
 onMounted(() => {
@@ -120,8 +120,8 @@ onMounted(() => {
                         <div v-if="$page.props.auth.user" class="mt-10">
                             <h1
                                 class="mb-4 text-3xl font-bold text-center leading-none tracking-tight text-gray-800 md:text-3xl lg:text-4xl dark:text-white">
-                                CRUD's</h1>
-                            <Card v-for="user in users" :key="user.id" :user="user" />
+                                Cursos Publics</h1>
+                            <Card v-for="course in courses" :key="course.id" :course="course" />
                         </div>
                     </main>
                 </div>

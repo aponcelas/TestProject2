@@ -11,27 +11,27 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Course;
 
 class UserController extends Controller
 {
     public function index(Request $request): Response
     {
-        $users = $this->getAllUsers();
+        $courses = $this->getAllVisibleCourses();
 
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'users' => $users,
+            'courses' => $courses,
         ]);
     }
 
-    public function getAllUsers() 
+    public function getAllVisibleCourses() 
     {
-        $users = User::all();
-        return $users;
+        $courses = Course::where('state', 'Public')->get();
+        return $courses;
     }
 
     public function update(Request $request, $id)

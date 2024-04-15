@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->longText('contenido_html');
-            $table->enum('visibilidad', ['publico', 'privado'])->default('publico');
-            $table->foreignId('curso_id')->constrained('courses');
+            $table->string('title');
+            $table->longText('content');
+            $table->enum('visibility', ['Public', 'Privat'])->default('Public');
+            $table->foreignId('course_id')->constrained('courses');
             $table->timestamps();
         });
     }

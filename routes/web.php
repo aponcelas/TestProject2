@@ -23,10 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/delete-course/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
     Route::get('/courses/generate-json', [CoursesController::class, 'generateJson'])->name('courses.generateJson');
 
-
     Route::get('/content', [ContentController::class, 'index'])->name('content.index');
-
-
+    Route::post('/add-content', [ContentController::class, 'add'])->name('content.add');
+    Route::post('/edit-content/{id}', [ContentController::class, 'update'])->name('content.update');
+    Route::post('/delete-content/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-user/{id}', [UserController::class, 'update'])->name('welcome.users.update');
     Route::post('/delete-user/{id}', [UserController::class, 'destroy'])->name('welcome.users.destroy');
 });
-
-
 
 Route::get('/users', function () {
     $users = User::all();

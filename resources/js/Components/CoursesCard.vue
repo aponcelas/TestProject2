@@ -21,10 +21,10 @@ const showDeleteModal = ref(false);
 
 const form = useForm({
     id: '',
-    name: props.course.nombre,
-    stage: props.course.etapa,
-    description: props.course.descripcion,
-    state: props.course.activo,
+    name: props.course.name,
+    stage: props.course.stage,
+    description: props.course.description,
+    state: props.course.state,
 });
 
 function openEditorModal(id) {
@@ -129,9 +129,9 @@ onMounted(() => {
             </div>
             <div class="flex items-center p-2">
                 <div>
-                    <span class="text-sm font-bold">{{ course.nombre }} / {{ course.etapa }}</span>
-                    <p class="cursor-default mt-1 text-sm" v-html="course.descripcion"></p>
-                    <p class="cursor-default mt-1 text-sm">{{ course.activo }}</p>
+                    <span class="text-sm font-bold">{{ course.name }} / {{ course.stage }}</span>
+                    <p class="cursor-default mt-1 text-sm" v-html="course.description"></p>
+                    <p class="cursor-default mt-1 text-sm">{{ course.state }}</p>
                 </div>
             </div>
         </div>
@@ -144,15 +144,15 @@ onMounted(() => {
                 <p class="inline-block text-red">{{ form.name }}</p>
             </h2>
             <p class="mb-2 text-sm">
-                <span class="font-bold text-sm">Nom del curs</span>
-            <div class="inline-block">{{ form.name }}</div>
+                <span class="font-bold text-sm">Nom del curs: </span>
+                {{ form.name }}
             </p>
             <p class="mb-2 text-sm">
                 <span class="font-bold text-sm">Etapa: </span>
                 {{ form.stage }}
             </p>
-            <p class="mb-2 text-sm">
-                <span class="font-bold text-sm">Descripció: </span>
+            <p class="mb-2 text-sm flex items-center">
+                <span class="font-bold text-sm mr-2">Descripció:</span>
                 <span v-html="form.description"></span>
             </p>
             <div class="mt-6 flex justify-end">
@@ -176,7 +176,7 @@ onMounted(() => {
                     class="text-sm mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red focus:border-red" />
             </div>
             <div class="mb-4">
-                <label class="block font-bold text-gray-900 text-sm">Etapa</label>
+                <label class="block font-bold text-gray-900 text-sm">Etapa: </label>
                 <select v-model="form.stage"
                     class="text-sm mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red focus:border-red">
                     <option v-for="stage in stages" :value="stage">{{ stage }}</option>
@@ -199,7 +199,7 @@ onMounted(() => {
                 </div>
             </div>
             <div class="mb-4">
-                <label class="block font-bold text-gray-900 text-sm">Etapa</label>
+                <label class="block font-bold text-gray-900 text-sm">Visibilitat: </label>
                 <select v-model="form.state"
                     class="text-sm mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red focus:border-red">
                     <option v-for="state in states" :value="state">{{ state }}</option>

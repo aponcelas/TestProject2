@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->enum('etapa', ['ESO', 'BTX', 'CF']);
-            $table->text('descripcion');
-            $table->enum('activo', ['Public', 'Privat'])->default('Public');
+            $table->string('name');
+            $table->enum('stage', ['ESO', 'BTX', 'CF']);
+            $table->text('description');
+            $table->enum('state', ['Public', 'Privat'])->default('Public');
             $table->timestamps();
         });
     }

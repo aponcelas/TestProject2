@@ -104,8 +104,13 @@ const showingNavigationDropdown = ref(false);
                     class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <template v-if="$page.props.auth.user">
-                            <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                Dashboard
+                            <ResponsiveNavLink :href="route('courses.index')"
+                                :active="route().current('courses.index')">
+                                Gestió de cursos
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('content.index')"
+                                :active="route().current('content.index')">
+                                Gestió de continguts
                             </ResponsiveNavLink>
                         </template>
                         <template v-else>
@@ -124,7 +129,6 @@ const showingNavigationDropdown = ref(false);
                             <div class="font-medium text-base text-gray-800" v-html="$page.props.auth.user.name"></div>
                             <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
                         </div>
-
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.edit')"> Perfil </ResponsiveNavLink>
                             <ResponsiveNavLink :href="route('logout')" method="post" as="button">
